@@ -1,0 +1,41 @@
+<!--部分テンプレート'users/show.html'-->
+<%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '200x200' %>
+
+<table class="table">
+  <% if user == current_user %>
+    <tbody>
+      <tr>
+        <td>氏名</td>
+        <td><%= user.last_name %><%= user.first_name %></td>
+      </tr>
+      <tr>
+        <td>ニックネーム(表示名)</td>
+        <td><%= user.nickname %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= user.email %></td>
+      </tr>
+      <tr>
+        <td>紹介文</td>
+        <td><%= user.introduction %></td>
+      </tr>
+    </tbody>
+  <% else %>
+    <tbody>
+      <tr>
+        <td>nickname</td>
+        <td><%= user.nickname %></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+        <td><%= user.introduction %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+<div>
+  <% if user == current_user %>
+    <%= link_to '編集する', edit_user_path(user) %>
+  <% end %>
+</div>
