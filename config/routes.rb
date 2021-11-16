@@ -5,17 +5,17 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   devise_for :users
-  
+
   root to: "homes#top"
   get "about" => "homes#about"
   resources :introductions  do
     resource :favorites, only: [:create, :destroy]
     resource :book_comments, only:[:create, :destroy]
   end
-  resource "users", only: [:show, :edit, :update, :index]
+  resources "users", only: [:show, :edit, :update, :index]
   get "users/unsubscribe" => "users#unsubscribe"
   patch "users/withdraw" => "users#withdraw"
-  
+
   namespace :admin do
     root to: "homes#top"  #投稿記事一覧
     resources :users, only: [:index, :show, :edit, :update]
