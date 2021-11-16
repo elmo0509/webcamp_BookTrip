@@ -1,12 +1,35 @@
-<% if user_signed_in? %>
-  <li>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to "新規登録", new_user_registration_path %>
-  </li>
-  <li>
-    <%= link_to "ログイン", new_user_session_path %>
-  </li>
-<% end %>
+<nav class="navbar navbar-expand navber-light bg-light">
+  <a href="/" class="navber-brand">BookTrip</a>
+  <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to "Home", root_path, class:"nav-link active" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "Introduction", introductions_path, class:"nav-link active" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "logout", destroy_user_session_path, method: :delete, class:"nav-link active" %>
+      </li>
+
+    <% else %>
+       <li class="nav-item">
+        <%= link_to "Home", root_path, class:"nav-link active" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "About", about_path, class:"nav-link active" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "新規登録", new_user_registration_path, class:"nav-link active" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "ログイン", new_user_session_path, class:"nav-link active"%>
+      </li>
+    <% end %>
+  </ul>
+</nav>
