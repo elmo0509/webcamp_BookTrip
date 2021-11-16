@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# BookTrip
 
-Things you may want to cover:
+## サイト概要
+作家ゆかりの地や、文学館、本のモデルになった場所を紹介するサイト
 
-* Ruby version
+### サイトテーマ
+作家が紹介されている文学館やゆかりの地、本のモデルになった土地をユーザー同士で紹介しあい、情報を収集しやすくします。
+紹介データが増え、調べやすくなることで、作家や本に興味を持つ人が詳細情報にアクセスする手助けになるサイトを目指しています。
 
-* System dependencies
+### テーマを選んだ理由
+高校生や大学生の時に、文学者について調べたくても、あまり良いサイトはなく、一つ一つ調べてみるしかありませんでした。
+時間もかかりますし、情報を得るのに苦労した経験があります。
+最近は、文豪ブームがあり、企画展やコラボなどで盛り上がり、ファンサイトも見られるようになりました。
+しかし、あくまでゲームやコミックのファンサイトであることが多く、純粋に作家が好きな人たちは弾かれてしまうように思いました。
+学生が興味を持った時に調べたりするときに使えるようなサイトがあれば良いと考え、作成を決めました。
 
-* Configuration
+### ターゲットユーザ
+高校生〜大学生
+専門知識は少ないが、本・作家に興味のある人
 
-* Database creation
 
-* Database initialization
+### 主な利用シーン
+旅行に行った先に、ゆかりの地があるか探す
+自分の興味を持った作家のゆかりの地や文学館を探す
 
-* How to run the test suite
+<!--## 設計書-->
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1Rc3pi3R0bNF5hdF6ImEtZ-oUgW72TkR0d2MNu3eK38Q/edit?usp=sharing
 
-* ...
+## AI教養コースにて実装する要素
+投稿記事の内容に対して、「Natural Language」を実装
+投稿した記事に関連する施設をスコアリングする機能を作成予定
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+<!--## 使用素材-->
+<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
+<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
