@@ -27,7 +27,7 @@
     <div class="form-group row">
       <div class="col-md-4"><%= f.label :password, "パスワード" %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> 文字以上)</em>
       <% end %></div>
       <div class="col-md-7"><%= f.password_field :password, autocomplete: "new-password" %></div>
     </div>
@@ -42,5 +42,10 @@
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="actions row">
+    <p>
+      ユーザー登録がお済みの方は
+      <%= render "devise/shared/links" %>
+    </p>
+  </div>
 </div>
