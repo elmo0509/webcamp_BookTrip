@@ -10,7 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_050348) do
+ActiveRecord::Schema.define(version: 2021_11_16_053255) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "introduction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "introduction_comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "introduction_id", null: false
+    t.text "commtent", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "introductions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "place", null: false
+    t.string "image_id"
+    t.string "author", null: false
+    t.string "title"
+    t.integer "address_prefecture", default: 0, null: false
+    t.string "address_after_prefecture", null: false
+    t.string "address_building_name"
+    t.text "introduction", null: false
+    t.boolean "is_closed", default: false, null: false
+    t.boolean "admin_is_closed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "introduction_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
