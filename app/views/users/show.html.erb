@@ -1,2 +1,8 @@
-<h2>マイページ</h2>
-<%= render 'info', user:@user %>
+<div class="container">
+  <% if @user == current_user %>
+    <h2 class="row mt-4 mb-5"><%= @user.nickname %>さんのマイページ</h2>
+  <% else %>
+    <h2 class="row mt-4 mb-5"><%= @user.nickname %>さんのページ</h2>
+  <% end %>
+  <%= render 'info', user:@user %>
+</div>
