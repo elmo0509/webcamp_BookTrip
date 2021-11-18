@@ -13,6 +13,8 @@ class IntroductionsController < ApplicationController
 
   def show
     @introduction = Introduction.find(params[:id])
+    @introduction_comment = IntroductionComment.new
+    @user = @introduction.user
   end
 
   def index

@@ -3,14 +3,13 @@
 
   <table class="table table-hover table-inverse">
     <thead>
-
       <tr>
         <th></th>
         <th>スポット名</th>
         <th>場所</th>
         <th>いいね</th>
+        <th>コメント件数</th>
       </tr>
-
     </thead>
 
     <tbody>
@@ -41,7 +40,8 @@
             <% end %>
           </td>
         <% end %>
-
+        
+        <td><%= introduction.introduction_comments.count %>件</td>
       </tr>
       <% end %>
     </tbody>

@@ -1,52 +1,104 @@
 <div class="container">
-  <h2 class="row mt-4 mb-5">スポット紹介</h2>
+  <div class="row mt-4 mb-5">
+    <h2 class="col-4">スポット紹介</h2>
 
-  <table class="table">
-    <tr>
-      <td>スポット名</td>
-      <td><%= @introduction.place %></td>
-    </tr>
-    <tr>
-      <td>作者名</td>
-      <td><%= @introduction.author %></td>
-    </tr>
-    <tr>
-      <td>作品名</td>
-      <td><%= @introduction.title %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= @introduction.address_prefecture %><%= @introduction.address_after_prefecture %><%= @introduction.address_building_name %></td>
-    </tr>
-    <tr>
-      <td>おすすめポイント</td>
-      <td><%= @introduction.introduction %></td>
-    </tr>
-    <tr>
-      <td>いいね</td>
-      <% if @introduction.favorited_by?(current_user) %>
-        <td>
-          <%= link_to introduction_favorites_path(@introduction), method: :delete do %>
-            ♥<%= @introduction.favorites.count %>
-          <% end %>
-        </td>
-      <% else %>
-        <td>
-          <%= link_to introduction_favorites_path(@introduction), method: :post do %>
-            ♡<%= @introduction.favorites.count %>
-          <% end %>
-        </td>
-      <% end %>
-    </tr>
-  </table>
-
-  <div class="row">
-    <% if @introduction.user == current_user %>
-      <div class="col-2"><%= link_to '編集する', edit_introduction_path(@introduction), class: "btn btn-sm btn-success" %></div>
-      <div class="col">
-        <%= link_to "削除する", introduction_path(@introduction), method: :delete, data: {confirm: "本当に消しますか？"},class: "btn btn-sm btn-danger" %>
+    <div class="col">
+      <div class="row">
+        <% if @introduction.user == current_user %>
+          <div class="col-2"><%= link_to '編集する', edit_introduction_path(@introduction), class: "btn btn-sm btn-success" %></div>
+          <div class="col">
+            <%= link_to "削除する", introduction_path(@introduction), method: :delete, data: {confirm: "本当に消しますか？"},class: "btn btn-sm btn-danger" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 
+  <div class="row">
+    <div class="col-4">
+      <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '150x150' %>
+      <table class="table">
+        <tbody>
+            <tr>
+              <td>nickname</td>
+              <td><%= @user.nickname %></td>
+            </tr>
+            <tr>
+              <td>introduction</td>
+              <td><%= @user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div class="col">
+      <table class="table">
+        <tr>
+          <td>スポット名</td>
+          <td><%= @introduction.place %></td>
+        </tr>
+        <tr>
+          <td>作者名</td>
+          <td><%= @introduction.author %></td>
+        </tr>
+        <tr>
+          <td>作品名</td>
+          <td><%= @introduction.title %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @introduction.address_prefecture %><%= @introduction.address_after_prefecture %><%= @introduction.address_building_name %></td>
+        </tr>
+        <tr>
+          <td>おすすめポイント</td>
+          <td><%= @introduction.introduction %></td>
+        </tr>
+        <tr>
+          <td>いいね</td>
+          <% if @introduction.favorited_by?(current_user) %>
+            <td>
+              <%= link_to introduction_favorites_path(@introduction), method: :delete do %>
+                ♥<%= @introduction.favorites.count %>
+              <% end %>
+            </td>
+          <% else %>
+            <td>
+              <%= link_to introduction_favorites_path(@introduction), method: :post do %>
+                ♡<%= @introduction.favorites.count %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+  <!--コメント機能-->
+  <div class="row mt-4">
+    <div class="col-4">
+      <%= form_with(model:[@introduction, @introduction_comment], local: true) do |f| %>
+        <%= f.text_area :comment, size: '40x5', placeholder: "コメントをここに" %></br>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
+
+    <div class="col">
+      <table class="table">
+        <thead>
+          <th>投稿者</th>
+          <th>コメント作成日</th>
+          <th>コメント</th></th>
+        </thead>
+        <tbody>
+          <% @introduction.introduction_comments.each do |introduction_comment| %>
+            <td><%= introduction_comment.user.nickname %></td>
+            <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= introduction_comment.comment %></td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
