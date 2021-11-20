@@ -1,9 +1,15 @@
 class Introduction < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :introduction_comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
   attachment :image
+
+  # いいね機能
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
   enum address_prefecture:{
    "---":0,

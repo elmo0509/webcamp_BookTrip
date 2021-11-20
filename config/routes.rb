@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "about" => "homes#about"
   resources :introductions  do
     resource :favorites, only: [:create, :destroy]
-    resource :book_comments, only:[:create, :destroy]
+    resources :introduction_comments, only:[:create, :destroy]
   end
   resources "users", only: [:show, :edit, :update, :index]
   get "users/unsubscribe" => "users#unsubscribe"

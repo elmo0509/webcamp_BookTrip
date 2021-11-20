@@ -1,0 +1,9 @@
+<% if introduction.favorited_by?(current_user) %>
+  <%= link_to introduction_favorites_path(introduction), method: :delete, remote: true do %>
+    ♥<%= introduction.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to introduction_favorites_path(introduction), method: :post, remote:true do %>
+    ♡<%= introduction.favorites.count %>
+  <% end %>
+<% end %>

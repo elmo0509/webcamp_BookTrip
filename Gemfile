@@ -82,3 +82,6 @@ gem 'enum_help'
 #Rubcop導入, 必要に応じて使用するため、require:false
 gem 'rubocop', require:false
 gem 'rubocop-rails', require:false
+
+# 非同期化
+gem 'jquery-rails'
