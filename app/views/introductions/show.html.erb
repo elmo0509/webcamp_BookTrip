@@ -55,19 +55,9 @@
         </tr>
         <tr>
           <td>いいね</td>
-          <% if @introduction.favorited_by?(current_user) %>
-            <td>
-              <%= link_to introduction_favorites_path(@introduction), method: :delete do %>
-                ♥<%= @introduction.favorites.count %>
-              <% end %>
-            </td>
-          <% else %>
-            <td>
-              <%= link_to introduction_favorites_path(@introduction), method: :post do %>
-                ♡<%= @introduction.favorites.count %>
-              <% end %>
-            </td>
-          <% end %>
+          <td id="favorites_buttons_<%= @introduction.id %>">
+            <%= render "favorites/favorite", introduction: @introduction %>
+          </td>
         </tr>
       </table>
     </div>
