@@ -1,0 +1,43 @@
+<div class="container">
+  <h2 class="row mt-4 mb-5">スポット紹介</h2>
+
+  <h4 class="row mt-4">ランキング</h4>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>順位</th>
+        <th></th>
+        <th>スポット名</th>
+        <th>場所</th>
+        <th>いいね</th>
+        <th>コメント件数</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @all_ranks.each.with_index(1) do |introduction, i| %>
+      <tr>
+        <td>第<%= i %>位</td>
+        <td>
+          <%= link_to user_path(introduction.user_id) do  %>
+          <%= attachment_image_tag introduction.user, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to introduction_path(introduction.id) do %>
+          <%= introduction.place %>
+          <% end %>
+          </td>
+        <td><%= introduction.address_prefecture %></td>
+
+        <td id="favorites_buttons_<%= introduction.id %>">
+          <%= render "favorites/favorite", introduction: introduction %>
+        </td>
+
+        <td><%= introduction.introduction_comments.count %>件</td>
+      </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>
