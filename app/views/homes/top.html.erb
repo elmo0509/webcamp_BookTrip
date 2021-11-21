@@ -30,9 +30,13 @@
           </td>
         <td><%= introduction.address_prefecture %></td>
 
-        <td id="favorites_buttons_<%= introduction.id %>">
-          <%= render "favorites/favorite", introduction: introduction %>
-        </td>
+        <% if user_signed_in? %>
+          <td id="favorites_buttons_<%= introduction.id %>">
+            <%= render "favorites/favorite", introduction: introduction %>
+          </td>
+        <% else %>
+          <td>♥<%= introduction.favorites.count %></td>
+        <% end %>
 
         <td><%= introduction.introduction_comments.count %>件</td>
       </tr>
