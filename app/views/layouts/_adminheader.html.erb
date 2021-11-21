@@ -1,9 +1,16 @@
-<% if admin_signed_in? %>
-  <li>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to "ログイン", new_user_session_path %>
-  </li>
-<% end %>
+<nav class="navbar navbar-expand navber-light bg-light">
+  <a href="/" class="navber-brand">BookTrip</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <%= link_to "ユーザ一覧", admin_users_path, class:"nav-link active" %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "投稿一覧", admin_root_path, class:"nav-link active" %>
+    </li>
+
+    <li class="nav-item">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link active" %>
+    </li>
+  </ul>
+</nav>
