@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>コメント作成日</th>
+      <th>コメント</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% introduction.introduction_comments.each do |introduction_comment| %>
+      <tr>
+        <td><%= introduction_comment.user.nickname %></td>
+        <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= introduction_comment.comment %></td>
+        <td>
+          <% if introduction.user == current_user %>
+            <%= link_to "削除", introduction_introduction_comment_path(introduction_comment.introduction, introduction_comment), method: :delete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

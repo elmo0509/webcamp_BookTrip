@@ -55,9 +55,13 @@
         </tr>
         <tr>
           <td>いいね</td>
-          <td id="favorites_buttons_<%= @introduction.id %>">
-            <%= render "favorites/favorite", introduction: @introduction %>
-          </td>
+          <% if user_signed_in? %>
+            <td id="favorites_buttons_<%= @introduction.id %>">
+              <%= render "favorites/favorite", introduction: @introduction %>
+            </td>
+          <% else %>
+            <td>♥<%= @introduction.favorites.count %></td>
+          <% end %>
         </tr>
       </table>
     </div>
@@ -66,39 +70,22 @@
 
 
   <!--コメント機能-->
-  <div class="row mt-4">
-    <div class="col-4">
-      <%= form_with(model:[@introduction, @introduction_comment], local: true) do |f| %>
-        <%= f.text_area :comment, size: '40x5', placeholder: "コメントをここに" %></br>
-        <%= f.submit "送信する" %>
-      <% end %>
-    </div>
+  <% if user_signed_in? %>
+    <div class="row mt-4">
+      <div class="col-4">
+        <%= form_with(model:[@introduction, @introduction_comment], local: true) do |f| %>
+          <%= f.text_area :comment, size: '40x5', placeholder: "コメントをここに" %></br>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
 
-    <div class="col">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>投稿者</th>
-            <th>コメント作成日</th>
-            <th>コメント</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @introduction.introduction_comments.each do |introduction_comment| %>
-            <tr>
-              <td><%= introduction_comment.user.nickname %></td>
-              <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
-              <td><%= introduction_comment.comment %></td>
-              <td>
-                <% if @introduction.user == current_user %>
-                  <%= link_to "削除", introduction_introduction_comment_path(introduction_comment.introduction, introduction_comment), method: :delete %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
+      <div class="col">
+        <%= render "introduction_comments/comment", introduction: @introduction %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="row mt-4">
+      <%= render "introduction_comments/comment", introduction: @introduction %>
+    </div>
+  <% end %>
 </div>
