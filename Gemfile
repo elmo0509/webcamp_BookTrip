@@ -85,3 +85,11 @@ gem 'rubocop-rails', require:false
 
 # 非同期化
 gem 'jquery-rails'
+
+# 環境変数利用
+gem 'dotenv-rails'
+
+# MySQL利用
+group :production do
+  gem 'mysql2'
+end
