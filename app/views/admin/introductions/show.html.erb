@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row mt-4 mb-5">
+    <h2 class="col-4">スポット紹介</h2>
+
+    <div class="col">
+      <div class="row">
+        <div class="col-2"><%= link_to '編集する', edit_admin_introduction_path(@introduction), class: "btn btn-sm btn-success" %></div>
+        <div class="col">
+          <%= link_to "削除する", admin_introduction_path(@introduction), method: :delete, data: {confirm: "本当に消しますか？"},class: "btn btn-sm btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '150x150' %>
+      <table class="table">
+        <tbody>
+            <tr>
+              <td>nickname</td>
+              <td><%= @user.nickname %></td>
+            </tr>
+            <tr>
+              <td>introduction</td>
+              <td><%= @user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div class="col">
+      <table class="table">
+        <tr>
+          <td>スポット名</td>
+          <td><%= @introduction.place %></td>
+        </tr>
+        <tr>
+          <td>作者名</td>
+          <td><%= @introduction.author %></td>
+        </tr>
+        <tr>
+          <td>作品名</td>
+          <td><%= @introduction.title %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @introduction.address_prefecture %><%= @introduction.address_after_prefecture %><%= @introduction.address_building_name %></td>
+        </tr>
+        <tr>
+          <td>おすすめポイント</td>
+          <td><%= @introduction.introduction %></td>
+        </tr>
+        <tr>
+          <td>いいね</td>
+          <td>♥<%= @introduction.favorites.count %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+  <!--コメント機能-->
+  <div class="row mt-4">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>投稿者</th>
+            <th>コメント作成日</th>
+            <th>コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @introduction.introduction_comments.each do |introduction_comment| %>
+            <tr>
+              <td><%= introduction_comment.user.nickname %></td>
+              <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= introduction_comment.comment %></td>
+              <td><%= link_to "削除", introduction_introduction_comment_path(introduction_comment.introduction, introduction_comment), method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
