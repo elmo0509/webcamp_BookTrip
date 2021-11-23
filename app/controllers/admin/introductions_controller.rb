@@ -1,4 +1,5 @@
 class Admin::IntroductionsController < ApplicationController
+  before_action :authenticate_admin!
 
   def show
     @introduction = Introduction.find(params[:id])

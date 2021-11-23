@@ -1,4 +1,5 @@
 class IntroductionsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
 
   def new
     @introduction = Introduction.new
