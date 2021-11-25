@@ -1,3 +1,41 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.title {
+  font-family: 'Kosugi Maru', sans-serif;
+  color: #7e5f4d;
+}
+
+.content {
+  background-color: #ffffff;
+  padding: 10px 20px;
+}
+
+.content content-title {
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+i {
+  color: #e6b422;
+}
+
+.mgr-10 {
+  margin-left: 10px;
+}
+
+table {
+  border: 3px #c39c89 solid;
+}
+
+table thead{
+  background-color: #e7b09f;
+  border: 3px #c39c89 solid;
+}
+
+table tbody {
+ border: 1px #c39c89 solid;
+}
+
+tr {
+  border: 2px #c39c89 solid;
+}
