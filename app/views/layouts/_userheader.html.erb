@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand navber-light bg-light">
-  <a href="/" class="navber-brand">BookTrip</a>
-  <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand navber-light">
+  <a href="/" class="navber-brand"><%= image_tag "horizontal_on_white_by_logaster.png", size: '220x100' %></a>
+  <ul class="nav nav-tabs nav-fill ml-auto">
     <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to "マイページ", user_path(current_user.id), class:"nav-link active" %>
@@ -16,19 +16,19 @@
 
     <% else %>
        <li class="nav-item">
-        <%= link_to "Home", root_path, class:"nav-link active" %>
+        <%= link_to "Home", root_path, class:"fas fa-home nav-link active" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "About", about_path, class:"nav-link active" %>
+        <%= link_to "About", about_path, class:"fas fa-link nav-link active" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "新規登録", new_user_registration_path, class:"nav-link active" %>
+        <%= link_to "新規登録", new_user_registration_path, class:"fas fa-user-plus nav-link active" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "ログイン", new_user_session_path, class:"nav-link active"%>
+        <%= link_to "ログイン", new_user_session_path, class:"fas fa-sign-in-alt nav-link active"%>
       </li>
     <% end %>
   </ul>
