@@ -19,7 +19,7 @@ class IntroductionsController < ApplicationController
   end
 
   def index
-    @introductions = Introduction.all
+    @introductions = Introduction.all.order(created_at: :desc)
   end
 
   def edit
