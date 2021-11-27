@@ -1,19 +1,13 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+// 共通
+.content {
+ background-color: #ffffff;
+ padding: 10px 20px;
+}
 
+
+ // ユーザー側のCSS
+
+ // main
  .user_main {
   background-color: #eee2d3;
   padding: 30px 0;
@@ -24,6 +18,8 @@
  }
 
 
+
+// footer
  .user_footer {
   background-color: #c39c89;
   padding: 5px 0;
@@ -31,6 +27,24 @@
 
  .user_footer p {
   color: #7e5f4d;
+ }
+
+ // 管理者側のCSS
+
+ // main
+ .admin_main {
+  background-color: #e8ecef;
+  padding: 30px 0
+ }
+
+ .table_admin {
+  border: 3px #ced7dc solid;
+ }
+
+// footer
+ .admin_footer {
+  background-color: #ced7dc;
+  padding: 5px 0
  }
 
  @import "bootstrap";
