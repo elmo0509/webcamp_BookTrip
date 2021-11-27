@@ -1,7 +1,7 @@
 <div class="container">
   <% if @user == current_user %>
     <div class="row mt-4 mb-5">
-      <h2 class="col"><%= @user.nickname %>さんのマイページ</h2>
+      <h2 class="col title"><%= @user.nickname %>さんのマイページ</h2>
       <div class="col"><%= link_to '編集する', edit_user_path(@user), class: "btn btn-info" %></div>
     </div>
     <%= render 'info', user: @user %>
@@ -11,7 +11,7 @@
     </div>
 
   <% else %>
-    <h2 class="row mt-4 mb-5"><%= @user.nickname %>さんのページ</h2>
+    <h2 class="row mt-4 mb-5 title"><%= @user.nickname %>さんのページ</h2>
     <div class="row">
       <div class="col-4">
         <%= render 'info', user: @user %>

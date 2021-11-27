@@ -17,11 +17,12 @@
       <thead>
         <tr>
           <th>順位</th>
-          <th></th>
+          <th>スポット画像</th>
           <th>スポット名</th>
           <th>場所</th>
+          <th>作者</th>
           <th>いいね</th>
-          <th>コメント件数</th>
+          <th>投稿者</th>
         </tr>
       </thead>
 
@@ -29,17 +30,14 @@
         <% @month_ranks.each.with_index(1) do |month_introduction, i| %>
         <tr>
           <td>第<%= i %>位</td>
-          <td>
-            <%= link_to user_path(month_introduction.user_id) do  %>
-            <%= attachment_image_tag month_introduction.user, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %>
-            <% end %>
-          </td>
+          <td><%= attachment_image_tag month_introduction, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %></td>
           <td>
             <%= link_to introduction_path(month_introduction.id) do %>
             <%= month_introduction.place %>
             <% end %>
             </td>
           <td><%= month_introduction.address_prefecture %></td>
+          <td><%= month_introduction.author %></td>
 
           <% if user_signed_in? %>
             <td id="favorites_buttons_<%= month_introduction.id %>">
@@ -49,7 +47,11 @@
             <td>♥<%= month_introduction.favorites.count %></td>
           <% end %>
 
-          <td><%= month_introduction.introduction_comments.count %>件</td>
+          <td>
+            <%= link_to user_path(month_introduction.user_id) do  %>
+            <%= month_introduction.user.nickname %>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
@@ -66,11 +68,12 @@
       <thead>
         <tr>
           <th>順位</th>
-          <th></th>
+          <th>スポット画像</th>
           <th>スポット名</th>
+          <th>作者</th>
           <th>場所</th>
           <th>いいね</th>
-          <th>コメント件数</th>
+          <th>投稿者</th>
         </tr>
       </thead>
 
@@ -78,16 +81,13 @@
         <% @all_ranks.each.with_index(1) do |introduction, i| %>
         <tr>
           <td>第<%= i %>位</td>
-          <td>
-            <%= link_to user_path(introduction.user_id) do  %>
-            <%= attachment_image_tag introduction.user, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %>
-            <% end %>
-          </td>
+          <td><%= attachment_image_tag introduction, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %></td>
           <td>
             <%= link_to introduction_path(introduction.id) do %>
             <%= introduction.place %>
             <% end %>
-            </td>
+          </td>
+          <td><%= introduction.author %></td>
           <td><%= introduction.address_prefecture %></td>
 
           <% if user_signed_in? %>
@@ -98,7 +98,11 @@
             <td>♥<%= introduction.favorites.count %></td>
           <% end %>
 
-          <td><%= introduction.introduction_comments.count %>件</td>
+          <td>
+            <%= link_to user_path(introduction.user_id) do  %>
+            <%= introduction.user.nickname %>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
