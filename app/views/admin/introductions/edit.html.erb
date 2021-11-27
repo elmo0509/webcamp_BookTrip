@@ -2,6 +2,11 @@
   <h2 class="row mt-4 mb-5"><%= @introduction.user.last_name %><%= @introduction.user.first_name %>さんの投稿編集画面</h2>
   <%= form_with model:@introduction, url:admin_introduction_path, local:true do |f| %>
 
+    <div class="row">
+      <div class="col-md-3"><%= f.label :image, "スポット画像" %></div>
+      <div class="col-md-7"><%= f.attachment_field :image, placeholder: "スポット画像" %></div>
+    </div></br>
+
     <div class="form-group row">
       <div class="col-md-3"><%= f.label :place, "スポット名" %></div>
       <div class="col-md-7"><%= f.text_field :place, autofocus: true, size: 50 %></div>
