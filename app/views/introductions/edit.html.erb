@@ -1,20 +1,20 @@
 <div class="container">
-  <h2 class="row mt-4 mb-5">投稿編集画面</h2>
+  <h2 class="row mt-4 mb-5 title">投稿編集画面</h2>
   <%= form_with model:@introduction, local:true do |f| %>
 
     <div class="form-group row">
       <div class="col-md-3"><%= f.label :place, "スポット名" %></div>
-      <div class="col-md-7"><%= f.text_field :place, autofocus: true %></div>
+      <div class="col-md-7"><%= f.text_field :place, autofocus: true, size: 40 %></div>
     </div>
 
     <div class="form-group row">
       <div class="col-md-3"><%= f.label :author, "作者名" %></div>
-      <div class="col-md-7"><%= f.text_field :author, autofocus: true %></div>
+      <div class="col-md-7"><%= f.text_field :author, autofocus: true, size: 40 %></div>
     </div>
 
     <div class="form-group row">
       <div class="col-md-3"><%= f.label :title, "作品名" %></div>
-      <div class="col-md-7"><%= f.text_field :title, autofocus: true %></div>
+      <div class="col-md-7"><%= f.text_field :title, autofocus: true, size: 40 %></div>
     </div>
 
     <div class="form-group row">
@@ -24,17 +24,17 @@
 
     <div class="form-group row">
       <div class="col-md-3"><%= f.label :address_after_prefecture, "住所(都道府県以降)" %></div>
-      <div class="col-md-7"><%= f.text_field :address_after_prefecture, autofocus: true %></div>
+      <div class="col-md-7"><%= f.text_field :address_after_prefecture, autofocus: true, size: 40 %></div>
     </div>
 
     <div class="form-group row">
       <div class="col-md-3"><%= f.label :address_building_name, "建物名" %></div>
-      <div class="col-md-7"><%= f.text_field :address_building_name, autofocus: true %></div>
+      <div class="col-md-7"><%= f.text_field :address_building_name, autofocus: true, size: 40 %></div>
     </div>
 
     <div class="form-group row">
       <div class="col-md-3"><%= f.label :introduction, "紹介文" %></div>
-      <div class="col-md-7"><%= f.text_field :introduction, autofocus: true %></div>
+      <div class="col-md-7"><%= f.text_area :introduction, autofocus: true, size: "50x4" %></div>
     </div>
 
     <div class="actions">
