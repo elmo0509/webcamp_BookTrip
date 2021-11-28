@@ -5,11 +5,13 @@ class IntroductionCommentsController < ApplicationController
     comment = current_user.introduction_comments.new(introduction_comment_params)
     comment.introduction_id = introduction.id
     comment.save
+    flash[:notice] = "Comment was successfully created."
     redirect_to request.referrer
   end
 
   def destroy
     IntroductionComment.find_by(id: params[:id]).destroy
+    flash[:notice] = "Comment was successfully deleted."
     redirect_to request.referrer
   end
 

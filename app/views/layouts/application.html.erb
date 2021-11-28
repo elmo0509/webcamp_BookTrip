@@ -15,6 +15,7 @@
         <%= render 'layouts/adminheader' %>
       </header>
       <main>
+        <%= render 'layouts/flash' %>
         <div class="admin_main">
           <%= yield %>
         </div>
@@ -29,6 +30,7 @@
         <%= render 'layouts/userheader' %>
       </header>
       <main>
+        <%= render 'layouts/flash' %>
         <div class="user_main">
           <%= yield %>
         </div>

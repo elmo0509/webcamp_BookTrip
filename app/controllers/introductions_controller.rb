@@ -9,6 +9,7 @@ class IntroductionsController < ApplicationController
     @introduction = Introduction.new(introduction_params)
     @introduction.user_id = current_user.id
     if @introduction.save
+      flash[:notice] = "Spot was successfully created."
       redirect_to introductions_path
     else
       render :edit
@@ -32,6 +33,7 @@ class IntroductionsController < ApplicationController
   def update
     @introduction = Introduction.find(params[:id])
     if @introduction.update(introduction_params)
+      flash[:notice] = "Spot was successfully updated."
       redirect_to introduction_path(@introduction.id)
     else
       render :edit
@@ -41,6 +43,7 @@ class IntroductionsController < ApplicationController
   def destroy
     @introduction = Introduction.find(params[:id])
     @introduction.destroy
+    flash[:notice] = "Spot was successfully deleted."
     redirect_to introductions_path
   end
 
