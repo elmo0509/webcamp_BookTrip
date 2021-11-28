@@ -42,6 +42,10 @@ https://docs.google.com/spreadsheets/d/1Rc3pi3R0bNF5hdF6ImEtZ-oUgW72TkR0d2MNu3eK
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-<!--## 使用素材-->
-<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
-<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
+## 使用素材
+・photoAC 写真のフリー素材サイト
+  URL:https://www.photo-ac.com/
+・Logaster
+  URL:https://www.777logos.com/
+・かわいいフリー素材集 いらすとや
+  URL:https://www.irasutoya.com/
