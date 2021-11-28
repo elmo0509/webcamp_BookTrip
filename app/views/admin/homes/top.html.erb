@@ -1,42 +1,46 @@
 <div class="container">
-  <div class="row mt-4">
-    <h2 class="mb-3">スポット投稿一覧</h2>
+  <h2 class="row mt-4 mb-3">スポット投稿一覧</h2>
 
-    <table class="table table-hover table-inverse">
+  <div class="content">
+    <h4 class="row">新着順</h4>
+    <table class="table table-hover table-striped table_admin ">
       <thead>
         <tr>
-          <th>image</th>
+          <th>投稿ID</th>
+          <th>スポット写真</th>
           <th>スポット名</th>
-          <th>投稿者 (ニックネーム)</th>
+          <th>作者名</th>
           <th>場所</th>
-          <th>いいね</th>
           <th>コメント件数</th>
+          <th>投稿者 (ニックネーム)</th>
         </tr>
       </thead>
 
       <tbody>
         <% @introductions.each do |introduction| %>
         <tr>
-          <td>
-            <%= link_to admin_user_path(introduction.user_id) do  %>
-            <%= attachment_image_tag introduction.user, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %>
-            <% end %>
-          </td>
+          <td><%= introduction.id %></td>
+          <td><%= attachment_image_tag introduction, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %></td>
           <td>
             <%= link_to admin_introduction_path(introduction.id) do %>
             <%= introduction.place %>
             <% end %>
-            </td>
-          <td><%= introduction.user.last_name %><%= introduction.user.first_name %> (<%= introduction.user.nickname %>)</td>
+          </td>
+
+          <td><%= introduction.author %></td>
+
           <td><%= introduction.address_prefecture %></td>
 
-          <td>♥<%= introduction.favorites.count %></td>
-
           <td><%= introduction.introduction_comments.count %>件</td>
+
+           <td>
+            <%= link_to admin_user_path(introduction.user_id) do  %>
+            <%= introduction.user.last_name %><%= introduction.user.first_name %> (<%= introduction.user.nickname %>)
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
-
     </table>
   </div>
 </div>

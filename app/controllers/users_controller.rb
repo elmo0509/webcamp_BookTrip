@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @introductions = @user.introductions
   end
 
   def edit
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash[:notice] = "User was successfully updated."
       redirect_to user_path(@user.id)
     else
       render :edit

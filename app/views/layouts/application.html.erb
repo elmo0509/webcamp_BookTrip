@@ -10,18 +10,36 @@
   </head>
 
   <body>
-    <header>
-      <% if admin_signed_in? %>
+    <% if admin_signed_in? %>
+      <header>
         <%= render 'layouts/adminheader' %>
-      <% else %>
+      </header>
+      <main>
+        <%= render 'layouts/flash' %>
+        <div class="admin_main">
+          <%= yield %>
+        </div>
+      </main>
+      <footer>
+        <div class="admin_footer">
+          <%= render 'layouts/footer' %>
+        </div>
+      </footer>
+    <% else %>
+      <header>
         <%= render 'layouts/userheader' %>
-      <% end %>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
-    <footer>
-      <%= render 'layouts/footer' %>
-    </footer>
+      </header>
+      <main>
+        <%= render 'layouts/flash' %>
+        <div class="user_main">
+          <%= yield %>
+        </div>
+      </main>
+      <footer>
+        <div class="user_footer">
+          <%= render 'layouts/footer' %>
+        </div>
+      </footer>
+    <% end %>
   </body>
 </html>

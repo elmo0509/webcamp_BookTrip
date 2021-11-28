@@ -1,47 +1,50 @@
 <!--部分テンプレート'users/show.html'-->
-<div class="row">
-  <div class="col-4">
-    <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '200x200' %>
-  </div>
-
-  <div class="col">
-    <table class="table">
-      <% if user == current_user %>
-        <tbody>
-          <tr>
-            <td>氏名</td>
-            <td><%= user.last_name %><%= user.first_name %></td>
-          </tr>
-          <tr>
-            <td>ニックネーム(表示名)</td>
-            <td><%= user.nickname %></td>
-          </tr>
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= user.email %></td>
-          </tr>
-          <tr>
-            <td>紹介文</td>
-            <td><%= user.introduction %></td>
-          </tr>
-        </tbody>
-      <% else %>
-        <tbody>
-          <tr>
-            <td>nickname</td>
-            <td><%= user.nickname %></td>
-          </tr>
-          <tr>
-            <td>introduction</td>
-            <td><%= user.introduction %></td>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
-    <div>
-      <% if user == current_user %>
-        <%= link_to '編集する', edit_user_path(user) %>
-      <% end %>
+<% if user == current_user %>
+  <div class="row">
+    <div class="col-4">
+      <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '200x200' %>
+    </div>
+    <div class="col">
+      <div class="content row">
+        <table class="table table_user">
+          <tbody>
+            <tr>
+              <th>氏名</th>
+              <td><%= user.last_name %><%= user.first_name %></td>
+            </tr>
+            <tr>
+              <th>ニックネーム(表示名)</th>
+              <td><%= user.nickname %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= user.email %></td>
+            </tr>
+            <tr>
+              <th>紹介文</th>
+              <td><%= user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="row text-center">
+    <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '200x200' %>
+  </div>
+  <div class="content row mt-2">
+    <table class="table table_user">
+      <tbody>
+        <tr>
+          <th>ニックネーム</th>
+          <td><%= user.nickname %></td>
+        </tr>
+        <tr>
+          <th>紹介文</th>
+          <td><%= user.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>

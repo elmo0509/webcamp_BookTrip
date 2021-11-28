@@ -1,47 +1,111 @@
 <div class="container">
-  <h2 class="row mt-4 mb-5">スポット紹介</h2>
+  <div class="main-visual mb-5">
+    <div class="main-visual-content">
+      <h2>ようこそBookTripへ</h2>
+      <h4>
+        ここは作家ゆかりの地や記念館・文学館、<br>
+        小説のモデルになった場所を紹介するサイトです。<br>
+      </h4>
+    </div>
+  </div>
+  <h2 class="row mb-4 title">スポット紹介</h2>
+  <div class="content">
+    <h4 class="content-title row">
+      <i class="fas fa-crown ranking"></i><span class="mgr-10">月間ランキング</span>
+    </h4>
+    <table class="table table-hover table-inverse table_user">
+      <thead>
+        <tr>
+          <th>順位</th>
+          <th>スポット画像</th>
+          <th>スポット名</th>
+          <th>場所</th>
+          <th>作者</th>
+          <th>いいね</th>
+          <th>投稿者</th>
+        </tr>
+      </thead>
 
-  <h4 class="row mt-4">ランキング</h4>
-  <table class="table table-hover table-inverse">
-    <thead>
-      <tr>
-        <th>順位</th>
-        <th></th>
-        <th>スポット名</th>
-        <th>場所</th>
-        <th>いいね</th>
-        <th>コメント件数</th>
-      </tr>
-    </thead>
+      <tbody>
+        <% @month_ranks.each.with_index(1) do |month_introduction, i| %>
+        <tr>
+          <td>第<%= i %>位</td>
+          <td><%= attachment_image_tag month_introduction, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %></td>
+          <td>
+            <%= link_to introduction_path(month_introduction.id) do %>
+            <%= month_introduction.place %>
+            <% end %>
+            </td>
+          <td><%= month_introduction.address_prefecture %></td>
+          <td><%= month_introduction.author %></td>
 
-    <tbody>
-      <% @all_ranks.each.with_index(1) do |introduction, i| %>
-      <tr>
-        <td>第<%= i %>位</td>
-        <td>
-          <%= link_to user_path(introduction.user_id) do  %>
-          <%= attachment_image_tag introduction.user, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %>
+          <% if user_signed_in? %>
+            <td id="favorites_buttons_<%= month_introduction.id %>">
+              <%= render "favorites/favorite", introduction: month_introduction %>
+            </td>
+          <% else %>
+            <td>♥<%= month_introduction.favorites.count %></td>
           <% end %>
-        </td>
-        <td>
-          <%= link_to introduction_path(introduction.id) do %>
-          <%= introduction.place %>
-          <% end %>
-          </td>
-        <td><%= introduction.address_prefecture %></td>
 
-        <% if user_signed_in? %>
-          <td id="favorites_buttons_<%= introduction.id %>">
-            <%= render "favorites/favorite", introduction: introduction %>
+          <td>
+            <%= link_to user_path(month_introduction.user_id) do  %>
+            <%= month_introduction.user.nickname %>
+            <% end %>
           </td>
-        <% else %>
-          <td>♥<%= introduction.favorites.count %></td>
+        </tr>
         <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
 
-        <td><%= introduction.introduction_comments.count %>件</td>
-      </tr>
-      <% end %>
-    </tbody>
+  <div class="content">
+    <h4 class="content-title row">
+      <i class="fas fa-crown"></i><span class="mgr-10">総合ランキング</span>
+    </h4>
+    <table class="table table-hover table-inverse table_user">
+      <thead>
+        <tr>
+          <th>順位</th>
+          <th>スポット画像</th>
+          <th>スポット名</th>
+          <th>作者</th>
+          <th>場所</th>
+          <th>いいね</th>
+          <th>投稿者</th>
+        </tr>
+      </thead>
 
-  </table>
+      <tbody>
+        <% @all_ranks.each.with_index(1) do |introduction, i| %>
+        <tr>
+          <td>第<%= i %>位</td>
+          <td><%= attachment_image_tag introduction, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %></td>
+          <td>
+            <%= link_to introduction_path(introduction.id) do %>
+            <%= introduction.place %>
+            <% end %>
+          </td>
+          <td><%= introduction.author %></td>
+          <td><%= introduction.address_prefecture %></td>
+
+          <% if user_signed_in? %>
+            <td id="favorites_buttons_<%= introduction.id %>">
+              <%= render "favorites/favorite", introduction: introduction %>
+            </td>
+          <% else %>
+            <td>♥<%= introduction.favorites.count %></td>
+          <% end %>
+
+          <td>
+            <%= link_to user_path(introduction.user_id) do  %>
+            <%= introduction.user.nickname %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
