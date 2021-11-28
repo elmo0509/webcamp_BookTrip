@@ -8,8 +8,11 @@ class IntroductionsController < ApplicationController
   def create
     @introduction = Introduction.new(introduction_params)
     @introduction.user_id = current_user.id
-    @introduction.save
-    redirect_to introductions_path
+    if @introduction.save
+      redirect_to introductions_path
+    else
+      render :edit
+    end
   end
 
   def show
