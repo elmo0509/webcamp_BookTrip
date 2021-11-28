@@ -12,7 +12,7 @@ class IntroductionsController < ApplicationController
       flash[:notice] = "Spot was successfully created."
       redirect_to introductions_path
     else
-      render :edit
+      render :new
     end
   end
 

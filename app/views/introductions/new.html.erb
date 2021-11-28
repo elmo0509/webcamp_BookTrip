@@ -20,12 +20,12 @@
     </div></br>
 
     <div class="form-group row">
-      <div class="col-md-3"><%= f.label :place, "スポット名" %></div>
+      <div class="col-md-3"><%= f.label :place, "スポット名" %><span class="mgr-10 must">(必須)</span></div>
       <div class="col-md-7"><%= f.text_field :place, autofocus: true, size: 40 %></div>
     </div>
 
     <div class="form-group row">
-      <div class="col-md-3"><%= f.label :author, "作者名" %></div>
+      <div class="col-md-3"><%= f.label :author, "作者名" %><span class="mgr-10 must">(必須)</span></div>
       <div class="col-md-7"><%= f.text_field :author, autofocus: true, size: 40 %></div>
     </div>
 
@@ -35,12 +35,12 @@
     </div>
 
     <div class="form-group row">
-      <div class="col-md-3"><%= f.label :address_prefecture, "住所(都道府県)" %></div>
+      <div class="col-md-3"><%= f.label :address_prefecture, "住所(都道府県)" %><span class="mgr-10 must">(必須)</span></div>
       <div class="col-md-7"><%= f.select :address_prefecture, Introduction.address_prefectures.keys, {} %></div>
     </div>
 
     <div class="form-group row">
-      <div class="col-md-3"><%= f.label :address_after_prefecture, "住所(都道府県以降)" %></div>
+      <div class="col-md-3"><%= f.label :address_after_prefecture, "住所(都道府県以降)" %><span class="mgr-10 must">(必須)</span></div>
       <div class="col-md-7"><%= f.text_field :address_after_prefecture, autofocus: true, size: 40 %></div>
     </div>
 
@@ -50,7 +50,7 @@
     </div>
 
     <div class="form-group row">
-      <div class="col-md-3"><%= f.label :introduction, "紹介文" %></div>
+      <div class="col-md-3"><%= f.label :introduction, "紹介文" %><span class="mgr-10 must">(必須)</span></div>
       <div class="col-md-7"><%= f.text_area :introduction, autofocus: true, size: "50x4" %></div>
     </div>
 
