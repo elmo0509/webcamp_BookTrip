@@ -43,9 +43,9 @@ https://docs.google.com/spreadsheets/d/1Rc3pi3R0bNF5hdF6ImEtZ-oUgW72TkR0d2MNu3eK
 - IDE：Cloud9
 
 ## 使用素材
-・photoAC 写真のフリー素材サイト
+- photoAC 写真のフリー素材サイト
   URL:https://www.photo-ac.com/
-・Logaster
+- Logaster
   URL:https://www.777logos.com/
-・かわいいフリー素材集 いらすとや
+- かわいいフリー素材集 いらすとや
   URL:https://www.irasutoya.com/
