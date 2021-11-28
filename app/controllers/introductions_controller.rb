@@ -43,7 +43,7 @@ class IntroductionsController < ApplicationController
 
   private
   def introduction_params
-    params.require(:introduction).permit(:place, :author, :title, :address_prefecture, :address_after_prefecture, :address_building_name, :introduction)
+    params.require(:introduction).permit(:image, :place, :author, :title, :address_prefecture, :address_after_prefecture, :address_building_name, :introduction)
   end
 
 end

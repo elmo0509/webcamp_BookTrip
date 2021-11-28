@@ -34,6 +34,10 @@
     <div class="col">
       <div class="content">
         <table class="table table-striped table_admin">
+           <tr>
+            <th>画像</th>
+            <td><%= attachment_image_tag @introduction, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '400x200' %></td>
+          </tr>
           <tr>
             <td>スポット名</td>
             <td><%= @introduction.place %></td>

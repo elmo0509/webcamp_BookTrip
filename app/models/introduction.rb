@@ -6,6 +6,12 @@ class Introduction < ApplicationRecord
   has_many :tags, through: :tag_maps
   attachment :image
 
+  validates :place, presence: true
+  validates :author, presence: true
+  validates :address_prefecture, presence: true
+  validates :address_after_prefecture, presence: true
+  validates :introduction, presence: true
+
   # いいね機能
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
