@@ -1,4 +1,15 @@
 <div class="container">
+  <!--バリデーションメッセージ-->
+  <div class="row">
+    <% if @introduction.errors.any? %>
+      <%= @introduction.errors.count %>件のエラーが発生しました
+      <% @introduction.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
   <h2 class="row mt-4 mb-5"><%= @introduction.user.last_name %><%= @introduction.user.first_name %>さんの投稿編集画面</h2>
   <%= form_with model:@introduction, url:admin_introduction_path, local:true do |f| %>
 
