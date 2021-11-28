@@ -14,10 +14,18 @@ class Admin::IntroductionsController < ApplicationController
   def update
     @introduction = Introduction.find(params[:id])
     if @introduction.update(introduction_params)
+      flash[:notice] = "Admin: Spot was successfully updated."
       redirect_to admin_introduction_path(@introduction.id)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @introduction = Introduction.find(params[:id])
+    @introduction.destroy
+    flash[:notice] = "Admin: Spot was successfully deleted."
+    redirect_to admin_root_path
   end
 
   private
