@@ -1,19 +1,12 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+// 共通
+.content {
+ background-color: #ffffff;
+ padding: 10px 20px;
+}
 
+
+ // ユーザー側のCSS
+ // main
  .user_main {
   background-color: #eee2d3;
   padding: 30px 0;
@@ -23,7 +16,81 @@
   color: #c39c89;
  }
 
+ .main-visual {
+  width: 100%;
+  height: 300px;
+  background-image: url("home.jpg");
+  background-size: cover;
+  font-family: 'Kosugi Maru', sans-serif;
+  color: white;
+ }
 
+ .main-visual-content {
+  width: 100%;
+  height: 300px;
+  background: rgba( 0, 0, 0, 0.5);
+ }
+
+ .main-visual-content h2 {
+  padding: 80px 0 0 50px ;
+  opacity: 0.8;
+ }
+
+ .main-visual-content h4 {
+  padding: 10px 0 0 50px ;
+  opacity: 0.8;
+ }
+
+ .title {
+  font-family: 'Kosugi Maru', sans-serif;
+  color: #7e5f4d;
+ }
+
+ .content {
+  background-color: #ffffff;
+  padding: 10px 20px;
+ }
+
+ .content content-title {
+  font-family: 'Kosugi Maru', sans-serif;
+ }
+
+ i {
+  color: #e6b422;
+ }
+
+ .mgr-10 {
+  margin-left: 10px;
+ }
+
+ .table_user {
+  border: 3px #c39c89 solid;
+ }
+
+ .table_user thead{
+  background-color: #e7b09f;
+  border: 3px #c39c89 solid;
+ }
+
+ .table_user tbody {
+  border: 1px #c39c89 solid;
+ }
+
+ .table_user tr {
+  border: 2px #c39c89 solid;
+ }
+
+ .table_user th {
+  background-color: #e7b09f;
+ }
+
+ .sub-title {
+  font-family: 'Kosugi Maru', sans-serif;
+  color: #7e5f4d;
+ }
+
+
+// footer
  .user_footer {
   background-color: #c39c89;
   padding: 5px 0;
@@ -31,6 +98,23 @@
 
  .user_footer p {
   color: #7e5f4d;
+ }
+
+ // 管理者側のCSS
+ // main
+ .admin_main {
+  background-color: #e8ecef;
+  padding: 30px 0
+ }
+
+ .table_admin {
+  border: 3px #ced7dc solid;
+ }
+
+// footer
+ .admin_footer {
+  background-color: #ced7dc;
+  padding: 5px 0
  }
 
  @import "bootstrap";

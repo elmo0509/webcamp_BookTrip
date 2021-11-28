@@ -1,0 +1,46 @@
+<div class="content">
+  <h4 class="content-title row">新着順</h4>
+  <table class="table table-hover table-inverse table_user">
+    <thead>
+      <tr>
+        <th>スポット画像</th>
+        <th>スポット名</th>
+        <th>作者名</th>
+        <th>場所</th>
+        <th>いいね</th>
+        <th>投稿者</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% introductions.each do |introduction| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag introduction, :image, :fill, 100, 100, fallback: "no_image_square.jpg", size: '100x100' %>
+        </td>
+        <td>
+          <%= link_to introduction_path(introduction.id) do %>
+          <%= introduction.place %>
+          <% end %>
+        </td>
+        <td><%= introduction.author %></td>
+        <td><%= introduction.address_prefecture %></td>
+
+        <% if user_signed_in? %>
+          <td id="favorites_buttons_<%= introduction.id %>">
+            <%= render "favorites/favorite", introduction: introduction %>
+          </td>
+        <% else %>
+          <td>♥<%= introduction.favorites.count %></td>
+        <% end %>
+
+        <td>
+          <%= link_to user_path(introduction.user_id) do  %>
+          <%= introduction.user.nickname %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
