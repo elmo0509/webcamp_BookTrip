@@ -4,6 +4,7 @@ class IntroductionCommentsController < ApplicationController
     introduction = Introduction.find(params[:introduction_id])
     comment = current_user.introduction_comments.new(introduction_comment_params)
     comment.introduction_id = introduction.id
+    comment.score = Language.get_data(introduction_comment_params[:comment])
     comment.save
     flash[:notice] = "Comment was successfully created."
     redirect_to request.referrer

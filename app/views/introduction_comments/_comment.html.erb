@@ -9,16 +9,21 @@
   </thead>
   <tbody>
     <% introduction.introduction_comments.each do |introduction_comment| %>
-      <tr>
-        <td><%= introduction_comment.user.nickname %></td>
-        <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= introduction_comment.comment %></td>
-        <td>
-          <% if introduction.user == current_user %>
-            <%= link_to "削除", introduction_introduction_comment_path(introduction_comment.introduction, introduction_comment), method: :delete %>
-          <% end %>
-        </td>
-      </tr>
+      <% if introduction_comment.score < 0 %>
+      <% else %>
+        <tr>
+          <td><%= introduction_comment.user.nickname %></td>
+          <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
+
+            <td><%= introduction_comment.comment %></td>
+
+          <td>
+            <% if introduction.user == current_user %>
+              <%= link_to "削除", introduction_introduction_comment_path(introduction_comment.introduction, introduction_comment), method: :delete %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
