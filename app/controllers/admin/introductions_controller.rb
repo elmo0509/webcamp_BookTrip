@@ -13,6 +13,7 @@ class Admin::IntroductionsController < ApplicationController
 
   def update
     @introduction = Introduction.find(params[:id])
+    @introduction.score = Language.get_data(introduction_params[:introduction])
     if @introduction.update(introduction_params)
       flash[:notice] = "Admin: Spot was successfully updated."
       redirect_to admin_introduction_path(@introduction.id)

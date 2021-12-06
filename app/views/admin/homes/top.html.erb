@@ -6,8 +6,8 @@
     <table class="table table-hover table-striped table_admin ">
       <thead>
         <tr>
-          <th>投稿ID</th>
           <th>AI Score</th>
+          <th>投稿ID</th>
           <th>スポット写真</th>
           <th>スポット名</th>
           <th>作者名</th>
@@ -20,8 +20,12 @@
       <tbody>
         <% @introductions.each do |introduction| %>
         <tr>
+          <% if introduction.score < 0 %>
+            <td class="danger"><i class="fas fa-exclamation-triangle"></i><%= introduction.score %></td>
+          <% else %>
+            <td><%= introduction.score %></td>
+          <% end %>
           <td><%= introduction.id %></td>
-          <td><%= introduction.score %></td>
           <td><%= attachment_image_tag introduction, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %></td>
           <td>
             <%= link_to admin_introduction_path(introduction.id) do %>
