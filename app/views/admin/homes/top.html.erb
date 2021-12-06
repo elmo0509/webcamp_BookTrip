@@ -7,6 +7,7 @@
       <thead>
         <tr>
           <th>投稿ID</th>
+          <th>AI Score</th>
           <th>スポット写真</th>
           <th>スポット名</th>
           <th>作者名</th>
@@ -20,6 +21,7 @@
         <% @introductions.each do |introduction| %>
         <tr>
           <td><%= introduction.id %></td>
+          <td><%= introduction.score %></td>
           <td><%= attachment_image_tag introduction, :image, :fill, 40, 40, fallback: "no_image_square.jpg", size: '60x60' %></td>
           <td>
             <%= link_to admin_introduction_path(introduction.id) do %>
