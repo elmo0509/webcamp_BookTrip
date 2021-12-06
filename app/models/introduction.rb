@@ -17,6 +17,10 @@ class Introduction < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  def is_less_than_0_comment
+    introduction_comments.where("score<0")
+  end
+
   enum address_prefecture:{
    "---":0,
    北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
