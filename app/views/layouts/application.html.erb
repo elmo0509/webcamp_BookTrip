@@ -14,31 +14,23 @@
       <header>
         <%= render 'layouts/adminheader' %>
       </header>
-      <main>
+      <main class="admin_main">
         <%= render 'layouts/flash' %>
-        <div class="admin_main">
-          <%= yield %>
-        </div>
+        <%= yield %>
       </main>
-      <footer>
-        <div class="admin_footer">
-          <%= render 'layouts/footer' %>
-        </div>
+      <footer class="admin_footer">
+        <%= render 'layouts/footer' %>
       </footer>
     <% else %>
       <header>
         <%= render 'layouts/userheader' %>
       </header>
-      <main>
+      <main class="user_main">
         <%= render 'layouts/flash' %>
-        <div class="user_main">
-          <%= yield %>
-        </div>
+        <%= yield %>
       </main>
-      <footer>
-        <div class="user_footer">
-          <%= render 'layouts/footer' %>
-        </div>
+      <footer class="user_footer">
+        <%= render 'layouts/footer' %>
       </footer>
     <% end %>
   </body>

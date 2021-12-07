@@ -5,20 +5,34 @@
       <th>コメント作成日</th>
       <th>コメント</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% introduction.introduction_comments.each do |introduction_comment| %>
       <% if introduction_comment.score < 0 %>
+        <% if introduction_comment.user == current_user %>
+
+          <tr>
+            <td><%= introduction_comment.user.nickname %></td>
+            <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td>
+              <%= introduction_comment.comment %>
+              <div class="danger">
+                ※ネガティブなコメントなため、</br>
+                他のユーザーには表示されていません
+              </div>
+            </td>
+            <td><%= link_to "削除", introduction_introduction_comment_path(introduction_comment.introduction, introduction_comment), method: :delete %></td>
+          </tr>
+        <% end %>
       <% else %>
         <tr>
           <td><%= introduction_comment.user.nickname %></td>
           <td><%= introduction_comment.created_at.strftime('%Y/%m/%d') %></td>
-
-            <td><%= introduction_comment.comment %></td>
-
+          <td><%= introduction_comment.comment %></td>
           <td>
-            <% if introduction.user == current_user %>
+            <% if introduction_comment.user == current_user %>
               <%= link_to "削除", introduction_introduction_comment_path(introduction_comment.introduction, introduction_comment), method: :delete %>
             <% end %>
           </td>
