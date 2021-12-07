@@ -33,4 +33,48 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <h4>スポット一覧</h4>
+    <table class="table table-hover table-striped table_admin ">
+      <thead>
+        <tr>
+          <th>AI Score</th>
+          <th>スポット名</th>
+          <th>作者名</th>
+          <th>場所</th>
+          <th>コメント件数</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @introductions.each do |introduction| %>
+        <tr>
+          <% if introduction.score < 0 %>
+            <td class="danger"><i class="fas fa-exclamation-triangle"></i><%= introduction.score %></td>
+          <% else %>
+            <td><%= introduction.score %></td>
+          <% end %>
+          <td>
+            <%= link_to admin_introduction_path(introduction.id) do %>
+            <%= introduction.place %>
+            <% end %>
+          </td>
+
+          <td><%= introduction.author %></td>
+
+          <td><%= introduction.address_prefecture %></td>
+
+          <% if introduction.is_less_than_0_comment.present? %>
+            <td class="danger"><i class="fas fa-exclamation-triangle"></i><%= introduction.introduction_comments.count %></td>
+          <% else %>
+            <td>
+              <%= introduction.introduction_comments.count %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

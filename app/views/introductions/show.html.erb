@@ -81,13 +81,14 @@
   <% if user_signed_in? %>
     <div class="row mt-4">
       <div class="col-4">
+        <p class="exclamation">※批判的なコメントは表示されません</p>
         <%= form_with(model:[@introduction, @introduction_comment], local: true) do |f| %>
           <%= f.text_area :comment, size: '40x5', placeholder: "コメントをここに" %></br>
           <%= f.submit "送信する" %>
         <% end %>
       </div>
 
-      <div class="col content">
+      <div class="col content mgr-10">
         <%= render "introduction_comments/comment", introduction: @introduction %>
       </div>
     </div>

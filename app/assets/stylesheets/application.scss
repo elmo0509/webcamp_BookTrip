@@ -59,8 +59,17 @@
   font-family: 'Kosugi Maru', sans-serif;
  }
 
- i {
+.content-title i {
   color: #e6b422;
+ }
+
+ .content i {
+  color: #e6b422;
+ }
+
+ .exclamation {
+  font-family: 'Kosugi Maru', sans-serif;
+  color: #7e5f4d;
  }
 
  .mgr-10 {
@@ -113,6 +122,14 @@
 
  .table_admin {
   border: 3px #ced7dc solid;
+ }
+
+ .danger {
+  color: #d9333f;
+ }
+
+ .table_admin i {
+  color: #d9333f;
  }
 
 // footer

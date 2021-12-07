@@ -8,6 +8,7 @@ class IntroductionsController < ApplicationController
   def create
     @introduction = Introduction.new(introduction_params)
     @introduction.user_id = current_user.id
+    @introduction.score = Language.get_data(introduction_params[:introduction])
     if @introduction.save
       flash[:notice] = "Spot was successfully created."
       redirect_to introductions_path
@@ -32,6 +33,7 @@ class IntroductionsController < ApplicationController
 
   def update
     @introduction = Introduction.find(params[:id])
+    @introduction.score = Language.get_data(introduction_params[:introduction])
     if @introduction.update(introduction_params)
       flash[:notice] = "Spot was successfully updated."
       redirect_to introduction_path(@introduction.id)
