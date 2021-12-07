@@ -21,7 +21,7 @@
           <th>スポット名</th>
           <th>場所</th>
           <th>作者</th>
-          <th>いいね</th>
+          <th>いいね(累計)</th>
           <th>投稿者</th>
         </tr>
       </thead>
@@ -38,15 +38,7 @@
             </td>
           <td><%= month_introduction.address_prefecture %></td>
           <td><%= month_introduction.author %></td>
-
-          <% if user_signed_in? %>
-            <td id="favorites_buttons_<%= month_introduction.id %>">
-              <%= render "favorites/favorite", introduction: month_introduction %>
-            </td>
-          <% else %>
-            <td>♥<%= month_introduction.favorites.count %></td>
-          <% end %>
-
+          <td>♥<%= month_introduction.favorites.count %></td>
           <td>
             <%= link_to user_path(month_introduction.user_id) do  %>
             <%= month_introduction.user.nickname %>
@@ -72,7 +64,7 @@
           <th>スポット名</th>
           <th>作者</th>
           <th>場所</th>
-          <th>いいね</th>
+          <th>いいね(累計)</th>
           <th>投稿者</th>
         </tr>
       </thead>
@@ -89,15 +81,7 @@
           </td>
           <td><%= introduction.author %></td>
           <td><%= introduction.address_prefecture %></td>
-
-          <% if user_signed_in? %>
-            <td id="favorites_buttons_<%= introduction.id %>">
-              <%= render "favorites/favorite", introduction: introduction %>
-            </td>
-          <% else %>
-            <td>♥<%= introduction.favorites.count %></td>
-          <% end %>
-
+          <td>♥<%= introduction.favorites.count %></td>
           <td>
             <%= link_to user_path(introduction.user_id) do  %>
             <%= introduction.user.nickname %>
